@@ -1,0 +1,63 @@
+{
+    "name": "aetheris-bot",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/aetheris-bot/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nx/esbuild:esbuild",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "platform": "node",
+                "outputPath": "dist/apps/aetheris-bot",
+                "format": ["cjs"],
+                "bundle": false,
+                "main": "apps/aetheris-bot/src/main.ts",
+                "tsConfig": "apps/aetheris-bot/tsconfig.app.json",
+                "assets": ["apps/aetheris-bot/src/assets"],
+                "generatePackageJson": true,
+                "esbuildOptions": {
+                    "sourcemap": true,
+                    "outExtension": {
+                        ".js": ".js"
+                    }
+                }
+            },
+            "configurations": {
+                "development": {},
+                "production": {
+                    "esbuildOptions": {
+                        "sourcemap": false,
+                        "outExtension": {
+                            ".js": ".js"
+                        }
+                    }
+                }
+            }
+        },
+        "serve": {
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "aetheris-bot:build"
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "aetheris-bot:build:development"
+                },
+                "production": {
+                    "buildTarget": "aetheris-bot:build:production"
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nx/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["apps/aetheris-bot/**/*.ts"]
+            }
+        }
+    },
+    "tags": []
+}

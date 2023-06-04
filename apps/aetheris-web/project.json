@@ -48,6 +48,26 @@
             "options": {
                 "lintFilePatterns": ["aetheris-web/**/*.ts"]
             }
+        },
+        "version": {
+            "executor": "@jscutlery/semver:version",
+            "options": {
+                "push": true,
+                "noVerify": true,
+                "baseBranch": "master",
+                "postTargets": ["aetheris-web:github"],
+                "changelogHeader": "# Changelog\nAll notable changes to this project will be documented in this file.",
+                "commitMessageFormat": "chore(${projectName}): release ${version}"
+            }
+        },
+        "github": {
+            "executor": "@jscutlery/semver:github",
+            "options": {
+                "tag": "${tag}",
+                "notes": "${notes}",
+                "target": "master",
+                "notesStartTag": "${previousTag}"
+            }
         }
     },
     "tags": []

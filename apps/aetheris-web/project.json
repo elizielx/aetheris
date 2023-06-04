@@ -1,0 +1,54 @@
+{
+    "name":"aetheris-web",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "aetheris-web",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nx/next:build",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "outputPath": "aetheris-web"
+            },
+            "configurations": {
+                "development": {
+                    "outputPath": "aetheris-web"
+                },
+                "production": {}
+            }
+        },
+        "serve": {
+            "executor": "@nx/next:server",
+            "defaultConfiguration": "development",
+            "options": {
+                "build": "aetheris-web:build",
+                "dev": true
+            },
+            "configurations": {
+                "development": {
+                    "build": "aetheris-web:build:development",
+                    "dev": true
+                },
+                "production": {
+                    "build": "aetheris-web:build:production",
+                    "dev": false
+                }
+            }
+        },
+        "export": {
+            "executor": "@nx/next:export",
+            "options": {
+                "build": "aetheris-web:build:production"
+            }
+        },
+        "lint": {
+            "executor": "@nx/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["aetheris-web/**/*.ts"]
+            }
+        }
+    },
+    "tags": []
+}

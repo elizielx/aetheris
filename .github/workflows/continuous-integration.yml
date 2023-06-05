@@ -16,6 +16,9 @@ jobs:
         name: Nx Cloud - Main Job
         runs-on: ubuntu-latest
         steps:
+            - uses: actions/checkout@v2
+              with:
+                  fetch-depth: 0
             - uses: nrwl/nx-set-shas@v3
             - uses: bahmutov/npm-install@v1
 

@@ -58,7 +58,7 @@
         "husky": "^8.0.3",
         "lint-staged": "^13.2.2",
         "nx": "16.3.2",
-        "nx-cloud": "latest",
+        "nx-cloud": "16.3.2",
         "prettier": "^2.6.2",
         "prisma": "^4.5.0",
         "ts-node": "10.9.1",

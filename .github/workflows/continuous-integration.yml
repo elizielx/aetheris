@@ -13,6 +13,7 @@ permissions:
 
 jobs:
     main:
+        
         name: Nx Cloud - Main Job
         runs-on: ubuntu-latest
         steps:
@@ -20,6 +21,8 @@ jobs:
               with:
                   fetch-depth: 0
             - uses: nrwl/nx-set-shas@v3
+              with:
+                  main-branch-name: 'master'
             - uses: bahmutov/npm-install@v1
 
             - run: yarn nx format:check

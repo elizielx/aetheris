@@ -1,7 +1,7 @@
 {
     "name": "aetheris-web",
     "$schema": "../../node_modules/nx/schemas/project-schema.json",
-    "sourceRoot": "aetheris-web",
+    "sourceRoot": "apps/aetheris-web",
     "projectType": "application",
     "targets": {
         "build": {
@@ -9,11 +9,11 @@
             "outputs": ["{options.outputPath}"],
             "defaultConfiguration": "production",
             "options": {
-                "outputPath": "aetheris-web"
+                "outputPath": "dist/apps/aetheris-web"
             },
             "configurations": {
                 "development": {
-                    "outputPath": "aetheris-web"
+                    "outputPath": "apps/aetheris-web"
                 },
                 "production": {}
             }
@@ -22,16 +22,16 @@
             "executor": "@nx/next:server",
             "defaultConfiguration": "development",
             "options": {
-                "build": "aetheris-web:build",
+                "buildTarget": "aetheris-web:build",
                 "dev": true
             },
             "configurations": {
                 "development": {
-                    "build": "aetheris-web:build:development",
+                    "buildTarget": "aetheris-web:build:development",
                     "dev": true
                 },
                 "production": {
-                    "build": "aetheris-web:build:production",
+                    "buildTarget": "aetheris-web:build:production",
                     "dev": false
                 }
             }
@@ -39,34 +39,14 @@
         "export": {
             "executor": "@nx/next:export",
             "options": {
-                "build": "aetheris-web:build:production"
+                "buildTarget": "aetheris-web:build:production"
             }
         },
         "lint": {
             "executor": "@nx/linter:eslint",
             "outputs": ["{options.outputFile}"],
             "options": {
-                "lintFilePatterns": ["aetheris-web/**/*.ts"]
-            }
-        },
-        "version": {
-            "executor": "@jscutlery/semver:version",
-            "options": {
-                "push": true,
-                "noVerify": true,
-                "baseBranch": "master",
-                "postTargets": ["aetheris-web:github"],
-                "changelogHeader": "# Changelog\nAll notable changes to this project will be documented in this file.",
-                "commitMessageFormat": "chore(${projectName}): release ${version}"
-            }
-        },
-        "github": {
-            "executor": "@jscutlery/semver:github",
-            "options": {
-                "tag": "${tag}",
-                "notes": "${notes}",
-                "target": "master",
-                "notesStartTag": "${previousTag}"
+                "lintFilePatterns": ["apps/aetheris-web/**/*.{ts,tsx,js,jsx}"]
             }
         }
     },

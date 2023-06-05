@@ -5,27 +5,41 @@
     "projectType": "application",
     "targets": {
         "build": {
-            "executor": "@nx/webpack:webpack",
+            "executor": "@nx/esbuild:esbuild",
             "outputs": ["{options.outputPath}"],
             "defaultConfiguration": "production",
             "options": {
-                "target": "node",
-                "compiler": "tsc",
+                "platform": "node",
                 "outputPath": "dist/apps/aetheris-api",
+                "format": ["cjs"],
+                "bundle": false,
                 "main": "apps/aetheris-api/src/main.ts",
                 "tsConfig": "apps/aetheris-api/tsconfig.app.json",
                 "assets": ["apps/aetheris-api/src/assets"],
-                "isolatedConfig": true,
-                "webpackConfig": "apps/aetheris-api/webpack.config.js"
+                "generatePackageJson": true,
+                "esbuildOptions": {
+                    "sourcemap": true,
+                    "outExtension": {
+                        ".js": ".js"
+                    }
+                }
             },
             "configurations": {
                 "development": {},
-                "production": {}
+                "production": {
+                    "esbuildOptions": {
+                        "sourcemap": false,
+                        "outExtension": {
+                            ".js": ".js"
+                        }
+                    }
+                }
             }
         },
         "serve": {
             "executor": "@nx/js:node",
             "defaultConfiguration": "development",
+            "dependsOn": ["build"],
             "options": {
                 "buildTarget": "aetheris-api:build"
             },
@@ -93,7 +107,7 @@
                 "push": true,
                 "noVerify": true,
                 "baseBranch": "master",
-                "postTargets": ["aetheris-api:github"],
+                "postTargets": ["aetheris-bot:github"],
                 "changelogHeader": "# Changelog\nAll notable changes to this project will be documented in this file.",
                 "commitMessageFormat": "chore(${projectName}): release ${version}"
             }

@@ -23,7 +23,7 @@ jobs:
             - uses: nrwl/nx-set-shas@v3
               with:
                   main-branch-name: 'master'
-            - uses: bahmutov/npm-install@v2
+            - uses: bahmutov/npm-install@v1
 
             - run: yarn nx format:check
             - run: yarn nx affected -t lint --parallel=3

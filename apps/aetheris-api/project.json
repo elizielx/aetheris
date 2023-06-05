@@ -1,0 +1,112 @@
+{
+    "name": "aetheris-api",
+    "$schema": "../../node_modules/nx/schemas/project-schema.json",
+    "sourceRoot": "apps/aetheris-api/src",
+    "projectType": "application",
+    "targets": {
+        "build": {
+            "executor": "@nx/webpack:webpack",
+            "outputs": ["{options.outputPath}"],
+            "defaultConfiguration": "production",
+            "options": {
+                "target": "node",
+                "compiler": "tsc",
+                "outputPath": "dist/apps/aetheris-api",
+                "main": "apps/aetheris-api/src/main.ts",
+                "tsConfig": "apps/aetheris-api/tsconfig.app.json",
+                "assets": ["apps/aetheris-api/src/assets"],
+                "isolatedConfig": true,
+                "webpackConfig": "apps/aetheris-api/webpack.config.js"
+            },
+            "configurations": {
+                "development": {},
+                "production": {}
+            }
+        },
+        "serve": {
+            "executor": "@nx/js:node",
+            "defaultConfiguration": "development",
+            "options": {
+                "buildTarget": "aetheris-api:build"
+            },
+            "configurations": {
+                "development": {
+                    "buildTarget": "aetheris-api:build:development"
+                },
+                "production": {
+                    "buildTarget": "aetheris-api:build:production"
+                }
+            }
+        },
+        "lint": {
+            "executor": "@nx/linter:eslint",
+            "outputs": ["{options.outputFile}"],
+            "options": {
+                "lintFilePatterns": ["apps/aetheris-api/**/*.ts"]
+            }
+        },
+        "prisma-generate": {
+            "executor": "@nx-tools/nx-prisma:generate",
+            "options": {
+                "schema": "prisma/schema.prisma"
+            }
+        },
+        "prisma-migrate": {
+            "executor": "@nx-tools/nx-prisma:migrate",
+            "options": {
+                "schema": "prisma/schema.prisma"
+            }
+        },
+        "prisma-pull": {
+            "executor": "@nx-tools/nx-prisma:pull",
+            "options": {
+                "schema": "prisma/schema.prisma"
+            }
+        },
+        "prisma-push": {
+            "executor": "@nx-tools/nx-prisma:push",
+            "options": {
+                "schema": "prisma/schema.prisma"
+            }
+        },
+        "prisma-deploy": {
+            "executor": "@nx-tools/nx-prisma:deploy",
+            "options": {
+                "schema": "prisma/schema.prisma"
+            }
+        },
+        "prisma-status": {
+            "executor": "@nx-tools/nx-prisma:status",
+            "options": {
+                "schema": "prisma/schema.prisma"
+            }
+        },
+        "prisma-studio": {
+            "executor": "@nx-tools/nx-prisma:studio",
+            "options": {
+                "schema": "prisma/schema.prisma"
+            }
+        },
+        "version": {
+            "executor": "@jscutlery/semver:version",
+            "options": {
+                "push": true,
+                "noVerify": true,
+                "baseBranch": "master",
+                "postTargets": ["aetheris-api:github"],
+                "changelogHeader": "# Changelog\nAll notable changes to this project will be documented in this file.",
+                "commitMessageFormat": "chore(${projectName}): release ${version}"
+            }
+        },
+        "github": {
+            "executor": "@jscutlery/semver:github",
+            "options": {
+                "tag": "${tag}",
+                "notes": "${notes}",
+                "target": "master",
+                "notesStartTag": "${previousTag}"
+            }
+        }
+    },
+    "tags": []
+}

@@ -3,6 +3,13 @@
     "version": "0.0.0",
     "license": "MIT",
     "private": true,
+    "scripts": {
+        "commit": "commit",
+        "format": "nx format:write",
+        "format:write": "nx format:write",
+        "format:check": "nx format:check",
+        "prepare": "husky install .github/husky"
+    },
     "dependencies": {
         "@fastify/autoload": "~5.7.1",
         "@fastify/sensible": "~5.2.0",
@@ -23,6 +30,9 @@
         "zod": "^3.21.4"
     },
     "devDependencies": {
+        "@commitlint/cli": "^17.6.5",
+        "@commitlint/config-conventional": "^17.6.5",
+        "@commitlint/prompt-cli": "^17.6.5",
         "@jscutlery/semver": "^3.0.0",
         "@nx-tools/nx-prisma": "^4.0.3",
         "@nx/esbuild": "16.3.2",
@@ -45,6 +55,8 @@
         "eslint-plugin-jsx-a11y": "6.7.1",
         "eslint-plugin-react": "7.32.2",
         "eslint-plugin-react-hooks": "4.6.0",
+        "husky": "^8.0.3",
+        "lint-staged": "^13.2.2",
         "nx": "16.3.2",
         "prettier": "^2.6.2",
         "prisma": "^4.5.0",

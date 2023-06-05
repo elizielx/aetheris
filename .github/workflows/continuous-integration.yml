@@ -10,10 +10,13 @@ permissions:
     contents: read
     packages: write
     actions: read
+env:
+  NX_CLOUD_DISTRIBUTED_EXECUTION: true
+  NX_CLOUD_DISTRIBUTED_EXECUTION_AGENT_COUNT: 3
+  NX_BRANCH: ${{ github.event.number || github.ref_name }}
 
 jobs:
     main:
-        
         name: Nx Cloud - Main Job
         runs-on: ubuntu-latest
         steps:
@@ -24,6 +27,9 @@ jobs:
               with:
                   main-branch-name: 'master'
             - uses: bahmutov/npm-install@v1
+              with:
+                  useLockFile: false
+                  useRollingCache: true
 
             - run: yarn nx format:check
             - run: yarn nx affected -t lint --parallel=3

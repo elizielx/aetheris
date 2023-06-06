@@ -1,63 +1,48 @@
 {
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "affected": {
-    "defaultBase": "master"
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx-cloud",
-      "options": {
-        "cacheableOperations": [
-          "build",
-          "lint"
+    "$schema": "./node_modules/nx/schemas/nx-schema.json",
+    "affected": {
+        "defaultBase": "master"
+    },
+    "tasksRunnerOptions": {
+        "default": {
+            "runner": "nx-cloud",
+            "options": {
+                "cacheableOperations": ["build", "lint"],
+                "accessToken": "ZDJiOTc2OWMtNjNhNy00ZTBjLWJmOTAtOGJlYWQ1NDI3Y2I0fHJlYWQtd3JpdGU="
+            }
+        }
+    },
+    "targetDefaults": {
+        "build": {
+            "dependsOn": ["^build"],
+            "inputs": ["production", "^production"]
+        },
+        "lint": {
+            "inputs": ["default", "{workspaceRoot}/.eslintrc.json", "{workspaceRoot}/.eslintignore"]
+        }
+    },
+    "namedInputs": {
+        "default": ["{projectRoot}/**/*", "sharedGlobals"],
+        "production": [
+            "default",
+            "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+            "!{projectRoot}/tsconfig.spec.json",
+            "!{projectRoot}/jest.config.[jt]s",
+            "!{projectRoot}/.eslintrc.json"
         ],
-        "accessToken": "ZDJiOTc2OWMtNjNhNy00ZTBjLWJmOTAtOGJlYWQ1NDI3Y2I0fHJlYWQtd3JpdGU="
-      }
-    }
-  },
-  "targetDefaults": {
-    "build": {
-      "dependsOn": [
-        "^build"
-      ],
-      "inputs": [
-        "production",
-        "^production"
-      ]
+        "sharedGlobals": []
     },
-    "lint": {
-      "inputs": [
-        "default",
-        "{workspaceRoot}/.eslintrc.json",
-        "{workspaceRoot}/.eslintignore"
-      ]
+    "generators": {
+        "@nx/react": {
+            "application": {
+                "babel": true
+            }
+        },
+        "@nx/next": {
+            "application": {
+                "style": "css",
+                "linter": "eslint"
+            }
+        }
     }
-  },
-  "namedInputs": {
-    "default": [
-      "{projectRoot}/**/*",
-      "sharedGlobals"
-    ],
-    "production": [
-      "default",
-      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
-      "!{projectRoot}/tsconfig.spec.json",
-      "!{projectRoot}/jest.config.[jt]s",
-      "!{projectRoot}/.eslintrc.json"
-    ],
-    "sharedGlobals": []
-  },
-  "generators": {
-    "@nx/react": {
-      "application": {
-        "babel": true
-      }
-    },
-    "@nx/next": {
-      "application": {
-        "style": "css",
-        "linter": "eslint"
-      }
-    }
-  }
 }

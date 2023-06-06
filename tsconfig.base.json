@@ -15,6 +15,7 @@
         "skipDefaultLibCheck": true,
         "baseUrl": ".",
         "paths": {
+            "@aetheris/db": ["libs/db/src/index.ts"],
             "@aetheris/trpc": ["libs/trpc/src/index.ts"]
         }
     },

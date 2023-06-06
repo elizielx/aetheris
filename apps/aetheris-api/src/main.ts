@@ -7,7 +7,7 @@ const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 // Instantiate Fastify with some config
 const server = Fastify({
     logger: true,
-    maxParamLength: 5000
+    maxParamLength: 5000,
 });
 
 // Register your application as a normal plugin.
@@ -19,6 +19,5 @@ server.listen({ port, host }, (err) => {
         server.log.error(err);
         process.exit(1);
     } else {
-        console.log(`[ ready ] http://${host}:${port}`);
     }
 });

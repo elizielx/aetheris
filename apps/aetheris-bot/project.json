@@ -17,6 +17,7 @@
                 "tsConfig": "apps/aetheris-bot/tsconfig.app.json",
                 "assets": ["apps/aetheris-bot/src/assets"],
                 "generatePackageJson": true,
+                "watch": false,
                 "esbuildOptions": {
                     "sourcemap": true,
                     "outExtension": {
@@ -25,8 +26,11 @@
                 }
             },
             "configurations": {
-                "development": {},
+                "development": {
+                    "watch": true
+                },
                 "production": {
+                    "watch": false,
                     "esbuildOptions": {
                         "sourcemap": false,
                         "outExtension": {
@@ -40,14 +44,18 @@
             "executor": "@nx/js:node",
             "defaultConfiguration": "development",
             "options": {
-                "buildTarget": "aetheris-bot:build"
+                "buildTarget": "aetheris-bot:build",
+                "inspect": false,
+                "watch": false
             },
             "configurations": {
                 "development": {
-                    "buildTarget": "aetheris-bot:build:development"
+                    "buildTarget": "aetheris-bot:build:development",
+                    "watch": true
                 },
                 "production": {
-                    "buildTarget": "aetheris-bot:build:production"
+                    "buildTarget": "aetheris-bot:build:production",
+                    "watch": false
                 }
             }
         },

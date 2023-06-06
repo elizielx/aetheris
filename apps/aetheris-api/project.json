@@ -17,6 +17,7 @@
                 "tsConfig": "apps/aetheris-api/tsconfig.app.json",
                 "assets": ["apps/aetheris-api/src/assets"],
                 "generatePackageJson": true,
+                "watch": false,
                 "esbuildOptions": {
                     "sourcemap": true,
                     "outExtension": {
@@ -25,8 +26,11 @@
                 }
             },
             "configurations": {
-                "development": {},
+                "development": {
+                    "watch": true
+                },
                 "production": {
+                    "watch": false,
                     "esbuildOptions": {
                         "sourcemap": false,
                         "outExtension": {
@@ -41,14 +45,18 @@
             "defaultConfiguration": "development",
             "dependsOn": ["build"],
             "options": {
-                "buildTarget": "aetheris-api:build"
+                "buildTarget": "aetheris-api:build",
+                "inspect": false,
+                "watch": false
             },
             "configurations": {
                 "development": {
-                    "buildTarget": "aetheris-api:build:development"
+                    "buildTarget": "aetheris-api:build:development",
+                    "watch": true
                 },
                 "production": {
-                    "buildTarget": "aetheris-api:build:production"
+                    "buildTarget": "aetheris-api:build:production",
+                    "watch": false
                 }
             }
         },

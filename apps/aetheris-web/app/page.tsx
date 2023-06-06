@@ -1,14 +1,10 @@
-import styles from "./page.module.css";
+import PageComponent from "./PageComponent";
 
 export default async function Index() {
-    /*
-     * Replace the elements below with your own.
-     *
-     * Note: The corresponding styles are in the ./index.css file.
-     */
     return (
         <div>
-            <h1>Hello, world.</h1>
+            <h1>Hello, world!</h1>
+            <PageComponent />
         </div>
     );
 }

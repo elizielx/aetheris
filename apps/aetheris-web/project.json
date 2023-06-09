@@ -55,7 +55,7 @@
                 "push": true,
                 "noVerify": true,
                 "baseBranch": "master",
-                "postTargets": ["aetheris-bot:github"],
+                "postTargets": ["aetheris-web:github"],
                 "changelogHeader": "# Changelog\nAll notable changes to this project will be documented in this file.",
                 "commitMessageFormat": "chore(${projectName}): release ${version}"
             }

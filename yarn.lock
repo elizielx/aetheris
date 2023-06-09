@@ -44,6 +44,8 @@ __metadata:
     "@prisma/client": ^4.5.0
     "@sapphire/discord.js-utilities": ^7.0.0
     "@sapphire/framework": ^4.4.4
+    "@sapphire/plugin-subcommands": ^4.0.1
+    "@sapphire/utilities": ^3.11.2
     "@tanstack/react-query": ^4.29.12
     "@trpc/client": ^10.29.1
     "@trpc/next": ^10.29.1
@@ -3250,6 +3252,16 @@ __metadata:
     "@sapphire/utilities": ^3.11.1
     tslib: ^2.5.0
   checksum: cd515b5bdc5f250cfdf6b249e1dc15a41269d9d73a224c15ff3acbc6d311244ed6c517e69c00af1b364316f1e133f43bb920e283eb914fbefaf1e7b61c33a8a1
+  languageName: node
+  linkType: hard
+
+"@sapphire/plugin-subcommands@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "@sapphire/plugin-subcommands@npm:4.0.1"
+  dependencies:
+    "@sapphire/utilities": ^3.11.1
+    tslib: ^2.5.0
+  checksum: 2b22ee736fb4f5fdff9808f96242168aa99e0ffa9f2c35d76786eba64707667c2eb03ec4288b0fa133d4cf7007ad30e3b027b8e42c3f63b11c12977f85127f00
   languageName: node
   linkType: hard
 

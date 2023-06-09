@@ -18,6 +18,8 @@
         "@prisma/client": "^4.5.0",
         "@sapphire/discord.js-utilities": "^7.0.0",
         "@sapphire/framework": "^4.4.4",
+        "@sapphire/plugin-subcommands": "^4.0.1",
+        "@sapphire/utilities": "^3.11.2",
         "@tanstack/react-query": "^4.29.12",
         "@trpc/client": "^10.29.1",
         "@trpc/next": "^10.29.1",

@@ -1,18 +1,18 @@
 import { isMessageInstance } from "@sapphire/discord.js-utilities";
-import { Command } from "@sapphire/framework";
+import { ImperiaCommand } from "@aetheris/lib";
 
-export class PingCommand extends Command {
-    public constructor(context: Command.Context, options: Command.Options) {
+export class PingCommand extends ImperiaCommand {
+    public constructor(context: ImperiaCommand.Context, options: ImperiaCommand.Options) {
         super(context, { ...options });
     }
 
-    public override registerApplicationCommands(registry: Command.Registry) {
+    public override registerApplicationCommands(registry: ImperiaCommand.Registry) {
         registry.registerChatInputCommand((builder) =>
             builder.setName("ping").setDescription("Ping bot to see if it is alive")
         );
     }
 
-    public async chatInputRun(interaction: Command.ChatInputCommandInteraction) {
+    public async chatInputRun(interaction: ImperiaCommand.ChatInputCommandInteraction) {
         const msg = await interaction.reply({ content: `Ping?`, ephemeral: true, fetchReply: true });
 
         if (isMessageInstance(msg)) {

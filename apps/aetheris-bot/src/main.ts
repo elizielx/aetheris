@@ -1,7 +1,8 @@
-import { SapphireClient } from "@sapphire/framework";
+import { ImperiaClient } from "@aetheris/lib";
 import { GatewayIntentBits } from "discord.js";
 
-const client = new SapphireClient({
+const client = new ImperiaClient({
+    overrideApplicationCommandsRegistries: true,
     intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages],
     baseUserDirectory: __dirname,
     loadMessageCommandListeners: true,

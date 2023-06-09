@@ -16,6 +16,7 @@
         "baseUrl": ".",
         "paths": {
             "@aetheris/db": ["libs/db/src/index.ts"],
+            "@aetheris/lib": ["libs/lib/src/index.ts"],
             "@aetheris/trpc": ["libs/trpc/src/index.ts"]
         }
     },

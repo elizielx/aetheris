@@ -1,10 +1,12 @@
-import PageComponent from "./PageComponent";
+import AuthComponent from "./AuthComponent";
 
 export default async function Index() {
     return (
         <div>
-            <h1>Hello, world!</h1>
-            <PageComponent />
+            <main>
+                <h1>Aetheris</h1>
+                <AuthComponent />
+            </main>
         </div>
     );
 }
